@@ -1,0 +1,45 @@
+You have a business of many bicycles that
+ people can rent. We assume that:
+ 24 hours within the same day.
+The rate per hour depends on the time 
+of the day as follows: 0 - 7         and 21-24  the rate 
+is RWF 500 per hour 7-  10     and      19-21 the rate
+ is  RWF 1000 per hour 10- 19 the rate is 1500 per hour 
+ Write a python program that takes as 
+input the starting time and the ending time 
+and  does the following:
+(a) If the starting is greater than the
+ ending time or the sarting time or ending
+  time is out of the range 0-24, 
+  then display invalid input
+(b) Print the total amount to be paid 
+by the renter.def calculate_rental_amount(start_time, end_time):
+    Check for invalid input: time out of range or start time greater than end time
+def calculate_rental_amount(start_time, end_time):
+    Check for invalid input: time out of range or start time greater than end time
+    if start_time < 0 or start_time > 24 or end_time < 0 or end_time > 24 or start_time > end_time:
+        return "Invalid input: Start and end times must be between 0 and 24, and start time must be less than or equal to end time."
+    solution:
+    total_amount = 0
+
+    # Rates according to the given time periods
+    def get_rate(hour):
+        if 0 <= hour < 7 or 21 <= hour <= 24:
+            return 500
+        elif 7 <= hour < 10 or 19 <= hour < 21:
+            return 1000
+        elif 10 <= hour < 19:
+            return 1500
+
+    # Calculate the total amount based on each hour
+    for hour in range(int(start_time), int(end_time)):
+        total_amount += get_rate(hour)
+
+    return f"Total amount to be paid: {total_amount} RWF"
+
+# Input from the user
+start_time = float(input("Enter the start time (0-24): "))
+end_time = float(input("Enter the end time (0-24): "))
+
+# Calculate and display the total amount
+print(calculate_rental_amount(start_time, end_time))
